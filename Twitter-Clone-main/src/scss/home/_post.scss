@@ -1,0 +1,392 @@
+.post {
+    display: flex;
+    width: 100%;
+    transition: 200ms all ease-in;
+    padding: 16px;
+    padding-bottom: 8px;
+    cursor: pointer;
+    border-top: 1px solid rgba(236, 236, 236, 0.3);
+    border-bottom: 1px solid rgba(236, 236, 236, 0.3);
+
+    .post-comment {
+        display: none;
+    }
+
+    .post-comment.active {
+        display: flex;
+        justify-content: center;
+        top: 0;
+        left: 0;
+        position: fixed ;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(36, 45, 52, .7);
+        z-index: 999;
+        padding-top: 100px;
+
+        .post-comment__inner {
+            background-color: black;
+            width: 40%;
+            height: 40%;
+            padding: 10px;
+            border-radius: 10px;
+
+            @media (max-width: 960px) {
+                width: 80%;
+                height: 50%;
+            }
+
+            @media (max-width: 450px) {
+                width: 90%;
+                height: 40%;
+            }
+
+            .post-comment__close {
+                border: none;
+                background: transparent;
+                font-size: 18px;
+                color: #fff;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: 200ms all ease-in;
+                margin-bottom: 20px;
+
+                &:hover{
+                    background-color: #181919;
+                }
+            }
+
+            .image {
+                img {
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+            }
+
+            .post-comment__content {
+                display: flex;
+                height: 80%;
+
+                form {
+                    width: 100%;
+                    margin-left: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
+
+                    textarea {
+                        border: none;
+                        background: transparent;
+                        color: #fff;
+                        font-size: 18px;
+                        width: 100%;
+                        resize: none;
+                        outline: none;
+                        height: 75%;
+                    }
+
+                    .form-footer {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        margin-top: auto;
+                        
+                        &__icons {
+            
+                            button, label {
+                                border: none;
+                                background: transparent;
+                                color: $blue-color;
+                                font-size: 16px;
+                                cursor: pointer;
+                                border-radius: 50%;
+                                width: 30px;
+                                height: 30px;
+                                transition: 200ms all ease-in;
+            
+                                &:not(:last-child){
+                                    margin-right: 10px;
+                                }
+            
+                                &:first-child{
+                                    margin-right: 15px;
+                                }
+            
+                                &:hover{
+                                    background-color: rgba(29, 155, 240, .1);
+                                }
+                            }
+            
+                            label {
+                                input{
+                                    display: none;
+                                }
+                            }
+                            
+                        }
+            
+                        .tweet-button {
+                            background-color: $blue-color;
+                            border: none;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 88px;
+                            height: 36px;
+                            color: white;
+                            font-weight: 500;
+                            font-size: 16px;
+                            border-radius: 36px;
+                            cursor: pointer;
+                            transition: 200ms all ease-in;
+            
+                            &:hover{
+                                background-color: #1b8dd8;
+                            }
+            
+                            &:disabled {
+                                opacity: .6;
+                                cursor: default;
+            
+                                &:hover{
+                                    background: $blue-color;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+
+                
+            }
+        }
+    }
+
+    &:hover{
+        background-color: #080808;
+    }
+
+    &-image{
+        margin-right: 14px;
+        img{
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+
+    &-content{
+
+        width: 100%;
+
+        .post-header{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            min-height: 40px;
+            position: relative;
+
+            .post-detail {
+                position: absolute;
+                top: 30px;
+                right: 0;
+                width: 200px;
+                height: 50px;
+                box-shadow: 0px 0px 20px -10px rgb(241, 241, 241);
+                border-radius: 10px;
+                z-index: 99;
+                background-color: black;
+                transition: 200ms all ease;
+                opacity: 0;
+                visibility: hidden;
+
+                &:hover svg {
+                    color: red;
+                }
+
+                button {
+                    border: none;
+                    background: transparent;
+                    color: white;
+                    cursor: pointer;
+                    height: 100%;
+                    padding: 0 8px;
+                    font-size: 16px;
+                    font-weight: 400;
+                    border-radius: 10px;
+                    width: 100%;
+                    justify-content: space-between;
+                    position: static;
+
+                    &:hover{
+                        color: white;
+                        background-color: #16181C;
+                    }
+                }
+            }
+
+            &__info {
+                display: flex;
+                color: #747373;
+                font-size: 15px;
+                display: flex;
+                align-items: center;
+
+                @media (max-width: 500px) {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+
+                &-content{
+                    display: flex;
+                }
+
+                a{
+                    color: #fff;
+                    font-size: 15px;
+                    margin-right: 8px;
+                    font-weight: 500;
+
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+
+                span{
+                    margin: 0 6px;
+                }
+            }
+
+            button {
+                background: transparent;
+                color: #4c4c4c;
+                font-size: 17px;
+                cursor: pointer;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                transition: 200ms all ease-in;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: none;
+                position: absolute;
+                right: 0;
+                top: -5px;
+
+                &:hover {
+                    background: rgba(29, 155, 240, .1);
+                    color: $blue-color;
+                }
+            }
+        }
+
+        .post-header.active {
+            .post-detail {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+
+        .post-view {
+            margin: 16px 0 4px 0;
+            img{
+                border-radius: 10px;
+                width: 100%;
+                border: 1px solid #4c4c4c;
+            }
+        }
+
+        .post-actions {
+           max-width: 425px;
+           display: flex;
+           justify-content: space-between;
+           .like-button.active{
+            transition: 200ms all ease;
+            svg {
+                background-color: #200914;
+                color: #d32727;
+            }
+            color: #d32727;
+        }
+            button {
+                border: none;
+                background: transparent;
+                color: #4c4c4c;
+                display: flex;
+                align-items: center;
+                font-size: 18px;
+                cursor: pointer;
+                transition: 200ms all ease-in;
+
+                svg{
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    padding: 6px;
+                }
+
+                span{
+                    margin-left: 8px;
+                    font-size: 12px;
+                }
+
+
+            
+                &:first-child:hover{
+                    color: $blue-color;
+
+                    svg {
+                        background: rgba(29, 155, 240, .1);
+                    }
+                }
+                &:nth-child(2):hover{
+                    color: #02885B;
+
+                    svg {
+                        background: #071A14;
+                    }
+                }
+                &:nth-child(3):hover{
+                    color: #F91880;
+
+                    svg {
+                        background: #200914;
+                    }
+                }
+                &:last-child:hover{
+                    color: $blue-color;
+
+                    svg {
+                        background: rgba(29, 155, 240, .1);
+                    }
+                }
+            }
+
+            button.like-active {
+                color: #F91880;
+
+                svg{
+                    background-color: #200914;
+                }
+            }
+
+        }
+
+        .post-text{
+            margin-top: -16px;
+            color: white;
+            height: 30px;
+
+            @media (max-width: 500px) {
+                margin-top: 0;
+            }
+        }
+    }
+}

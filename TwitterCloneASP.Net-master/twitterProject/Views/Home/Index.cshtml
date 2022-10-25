@@ -1,0 +1,134 @@
+﻿@{
+    ViewData["Title"] = "Login Page";
+}
+
+
+
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+
+
+    <!-- Css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+
+    <!-- Javascript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+            const jqueryValidate = require("../../wwwroot/lib/jquery-validation/dist/jquery.validate");
+        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/3789dd4df1.js" crossorigin="anonymous"></script>
+
+</head>
+
+
+
+<body>
+
+
+    <div class="row">
+
+        <div class="col-lg-4">
+            <img class="title-image" src='img/logo-twitter.png.png' alt="twitter">
+        </div>
+
+        <div class="col-lg-4 title">
+            <i class="fa-brands fa-twitter fa-4x "></i>
+            <h1>What's Happening now</h1>
+            <h3>Join Twitter today.</h3>
+
+            <button class="btn btn-dark btn-lg btn-outline-light btn-block signup" type="button"
+                onclick="redirectSignUp();">Sign Up</button>
+
+            <button class="btn btn-light btn-lg btn-outline-light btn-block loginbtn" type="button"
+                onclick="showModal();">Log in</button>
+
+            <p class="text-danger m-auto w-75">@ViewBag.message</p>
+        </div>
+
+
+        <div id="id01" class="modal">
+
+            <form class="modal-content animate loginmodal" action="" method="post">
+
+                <div class="container logincontainer">
+                    <i class="fa-brands fa-twitter fa-4x "></i>
+                    @* <button id="closeBtn" class="closeBtn" value="X" onclick="closeModal();"></button>*@
+                    <h1>Sign into Twitter</h1>
+                    <div>
+                        @Html.TextBox("Email", null, new { @class = "form-control w-100", placeholder = "Email" })
+                    </div>
+                    <br />
+                    <div>
+                        @Html.Password("Password", null, new { @class = "form-control w-100", placeholder = "Password"
+                        })
+                    </div>
+                    <br />
+                    <button id="loginbtn" value="Login" formaction="/Home" class="btn btn-dark btn-lg button"
+                        type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+
+</body>
+
+<footer id="footer">
+    <i class="footer-item fa-brands fa-twitter"></i>
+    <i class="footer-item fa-brands fa-facebook-f"></i>
+    <i class="footer-item fa-brands fa-instagram"></i>
+    <i class="footer-item fa-solid fa-envelope"></i>
+    <p>© Copyright 2022 Jeetu Kumar</p>
+
+</footer>
+
+<script>
+
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal,  it closes the model
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    //function closeModal(){
+    //    modal.style.display = "none";
+    //}
+
+
+    //Redirect to sign up page when user clicks sign up button
+    function redirectSignUp() {
+        document.location = '@Url.Action("Create","Users")';
+    }
+
+    //Display the modal
+    function showModal() {
+        document.getElementById('id01').style.display = 'block';
+        document.getElementById('id01').style.width = 'auto';
+    }
+
+</script>
+
+</html>
+
+
+@*--------------------------------------------------------------------------------------------------*@

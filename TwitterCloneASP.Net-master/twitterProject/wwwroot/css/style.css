@@ -1,0 +1,464 @@
+html {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+}
+
+/*//////////////////////////////////////////////// Login page///////////////////////////// */
+.signup {
+    background-color: #1da1f2;
+    color: white;
+    font-weight: bold;
+    margin: 5% 3% 5% 0;
+    width: 50%;
+    border-radius: 99px;
+}
+
+.loginbtn {
+    color: #1da1f2;
+    font-weight: bold;
+    margin: 5% 3% 5% 0;
+    width: 50%;
+    border-color: rgb(207, 217, 222);
+    border-radius: 99px;
+}
+
+.fa-twitter {
+    color: #1da1f2;
+}
+
+.title-image {
+    width: 120%;
+    z-index: 0;
+    position: absolute;
+    right: 0%;
+}
+
+.title {
+    margin-top: 10%;
+    margin-left: 65%;
+}
+
+/*//////////////////////////CREATE USER PAGE////////////////*/
+
+.registerform {
+    border-radius: 59px;
+    text-align: center;
+    margin: 10% 30%;
+    background-color: aliceblue
+}
+
+.editform {
+    background-color: #f5f8fa;
+    text-align: center;
+    border-radius: 20px;
+    width: 80%;
+    margin-bottom: 20%;
+}
+
+
+.form-group {
+    margin: 10px 70px;
+    width: 70%;
+}
+
+/*/////////////////////////////////////////////////////SIDEBAR/////////////////////////////////////////////////////////*/
+
+.brand {
+    height: 28px;
+    filter: invert(46%) sepia(99%) saturate(1449%) hue-rotate(176deg) brightness(100%) contrast(91%);
+    padding: 10px;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 275px auto 350px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.layout__main {
+    width: 90%;
+}
+
+.layout__right-sidebar {
+    position: fixed;
+    width: 350px;
+}
+
+.sidebar-menu {
+    position: fixed;
+}
+
+.sidebar-menu__item {
+    font-size: 19px;
+    color: #0F141A;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    padding: 10px;
+}
+
+.sidebar-menu__item:hover {
+    background: rgba(29, 161, 242, 0.1);
+    color: #1da0f2;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.sidebar-menu__item--active {
+    color: #1da0f2;
+}
+
+.sidebar-menu__item-icon {
+    height: 26px;
+    margin-right: 20px;
+}
+
+.sidebar-menu__item--active .sidebar-menu__item-icon {
+    filter: invert(67%) sepia(60%) saturate(4956%) hue-rotate(176deg) brightness(95%) contrast(99%);
+}
+
+/*/////////////////////////// LOGIN MODAL //////////////////////////*/
+
+input[type=text],
+input[type=password] {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 18px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.button {
+    font-weight: bold;
+    margin: 5% 3% 5% 0;
+    width: 80%;
+    border-radius: 99px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.logincontainer {
+    text-align: center;
+    padding: 100px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 60%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    border: 1px solid #888;
+    width: 45%;
+    border-radius: 59px;
+}
+
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes animatezoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+}
+
+/*///////////////////////////////////////////Post Tweets Page//////////////////////////////////////////////////*/
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.tweetBox {
+    background-color: #f5f8fa;
+    text-align: center;
+    border-radius: 20px;
+    width: 95%;
+}
+
+.textBox {
+    margin-top: 10%;
+    display: inline-block;
+    padding: 5px 10px;
+    width: 100%;
+    height: 160px;
+}
+
+/*/////////////////////////////////////RIGHT SIDEBAR/////////////////////////////////////////////////////////*/
+
+.layout__right-sidebar {
+    right: 0;
+    top: 0;
+    width: 350px;
+    margin: 2%
+}
+
+.trends-for-you {
+    border-radius: 15px;
+    background: #f5f8fa;
+    margin-bottom: 15px;
+}
+
+.trends-for-you__block {
+    border-bottom: 1px solid #e6ecf0;
+    padding: 10px 15px;
+}
+
+.trends-for-you__block:last-child {
+    border-bottom: none;
+}
+
+.trends-for-you__heading {
+    font-size: 19px;
+    font-weight: bold;
+    color: #14171a;
+}
+
+.trends-for-you__meta-information {
+    font-size: 13px;
+    font-weight: 300;
+    color: #657786;
+}
+
+.trends-for-you__trend-name {
+    font-size: 15px;
+    color: #14171a;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 2px;
+}
+
+.who-to-follow {
+    background: #f5f8fa;
+    border-radius: 15px;
+}
+
+.who-to-follow__block {
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e6ecf0;
+}
+
+.who-to-follow__block:last-child {
+    border-bottom: none;
+}
+
+.who-to-follow__author-logo {
+    width: 49px;
+    height: 49px;
+    border-radius: 50px;
+    margin-right: 10px;
+}
+
+.who-to-follow__author-slug {
+    color: #657786;
+    font-size: 15px;
+}
+
+.who-to-follow__author-name {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.who-to-follow__content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.who-to-follow__heading {
+    font-size: 19px;
+    font-weight: bold;
+    color: #14171a;
+}
+
+.who-to-follow__button {
+    border: 1px solid #1da0f2;
+    color: #1da0f2;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 15px;
+    padding: 5px;
+    min-width: 67px;
+    text-align: center;
+}
+
+.who-to-follow__button:hover {
+    background: rgba(29, 161, 242, 0.1);
+    cursor: pointer;
+}
+
+/*////////////////////////////////////////////////////////TWEETS HOME PAGE/////////////////////////////////////////////////////*/
+
+.tweet {
+    display: flex;
+    border-bottom: 1px solid #e6ecf0;
+    margin-bottom: 2px;
+    padding: 10px 15px;
+}
+
+.tweet:hover {
+    background: rgba(0, 0, 0, 0.03);
+    cursor: pointer;
+}
+
+.tweet a {
+    color: #1b94e0;
+    text-decoration: none;
+}
+
+.tweet a:hover {
+    text-decoration: underline;
+}
+
+.tweet__author-logo {
+    width: 49px;
+    height: 49px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.tweet__header {
+    display: flex;
+}
+
+.tweet__author-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #14171a;
+    margin-right: 5px;
+}
+
+.tweet__author-slug {
+    color: #5b7083;
+    font-size: 15px;
+}
+
+.tweet__publish-time {
+    margin-left: 5px;
+    color: #657786;
+}
+
+.tweet__content {
+    margin: 10px;
+}
+
+.imgLike {
+    width: 8%;
+    text-align: left;
+    margin-left: 0%;
+    color: #1da1f2;
+}
+
+.likeContainer {
+    display: flex;
+}
+
+/*////////////////////////////////////////////// USERS TABLE PAGE ////////////////////////////////////////////////*/
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);
+
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.tableUser {
+    width: 95%;
+    background: #f5f8fa;
+    border-radius: 19px;
+    border-collapse: collapse;
+    margin: 1em;
+}
+
+td {
+    color: black;
+    font-weight: 400;
+    padding: 0.65em 1em;
+}
+
+.disabled td {
+    color: #4F5F64;
+}
+
+tbody tr {
+    transition: background 0.25s ease;
+}
+
+tbody tr:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.followUser {
+    background-color: #1da1f2;
+    color: white;
+    font-weight: bold;
+    margin: 5% 3% 5% 0;
+    width: 100%;
+    border-radius: 99px;
+}
+
+
+
+/*/////////FOOTER///////////*/
+
+#footer {
+    bottom: 0;
+    margin-top: 15%;
+    text-align: center;
+    background-color: #fff;
+    padding: 7% 15%;
+
+}
+
+
+.footer-item {
+    margin: 1%;
+    color: black;
+}

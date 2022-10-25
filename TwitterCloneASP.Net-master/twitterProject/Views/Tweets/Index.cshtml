@@ -1,0 +1,261 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor httpContextaccessor
+@model IEnumerable<twitterProject.Models.Tweet>
+@*@model twitterProject.Models.Tweet*@
+
+@{
+  ViewData["Title"] = "Home Page";
+}
+
+
+@{
+  int currentUserID = Int32.Parse(httpContextaccessor.HttpContext.Request.Cookies["Id"]);
+}
+
+<html>
+
+<head>
+  <link rel='stylesheet' type='text/css' media='screen' href='~/css/style.css'>
+
+  <!-- Font Awesome jk -->
+  <script src="https://kit.fontawesome.com/3789dd4df1.js" crossorigin="anonymous"></script>
+</head>
+<i class="fa-brands fa-twitter fa-4x brand"></i>
+
+<body>
+  @* <div class="tweetBody">*@
+
+  @*@* <form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+    <input asp-for="Description" class="form-control" />
+    <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+    </form>*@
+
+  <div class="layout">
+    <div class="layout__left-sidebar">
+      <div class="sidebar-menu">
+
+        <div class="sidebar-menu__item sidebar-menu__item--active">
+          <img src="./svg/home.svg" class="sidebar-menu__item-icon" />
+          @Html.ActionLink("Home", "Index", "Tweets", null)
+        </div>
+        <div class="sidebar-menu__item">
+          <img src="./svg/explore.svg" class="sidebar-menu__item-icon" />
+          @Html.ActionLink("Tweet", "Create", "Tweets", null)
+        </div>
+
+        <div class="sidebar-menu__item">
+          <img src="./svg/profile.svg" class="sidebar-menu__item-icon" />
+          @Html.ActionLink("Users", "Index", "Users", null)
+        </div>
+        @{
+          string name = httpContextaccessor.HttpContext.Request.Cookies["Check"];
+          string UserId = httpContextaccessor.HttpContext.Request.Cookies["Id"];
+
+        }
+        <div class="sidebar-menu__item">
+          <img src="./svg/profile.svg" class="sidebar-menu__item-icon" />
+          <a style="text-decoration:none;" class="nav-text text-light" asp-action="Edit" asp-controller="Users"
+            asp-route-id="@UserId">
+            <span>@name</span></a>
+        </div>
+        <div class="sidebar-menu__item">
+          <img src="./svg/more.svg" class="sidebar-menu__item-icon" />
+          @Html.ActionLink("Logout", "Logout", "Home", null)
+        </div>
+      </div>
+    </div>
+    <div class="layout__main">
+
+
+
+
+
+      @foreach (var item in Model)
+      {
+
+
+                string imagePath = item.User.ImageUrl;
+
+
+        //------------------------------------------------------
+
+        <div class="tweet">
+          <img class="tweet__author-logo" src="@imagePath" />
+          <div class="tweet__main">
+            <div class="tweet__header">
+              <div class="tweet__author-name">
+                @Html.DisplayFor(modelItem => item.User.FirstName)
+              </div>
+              <div class="tweet__author-slug">
+                @Html.DisplayFor(modelItem => item.User.Email)
+              </div>
+              <div class="tweet__publish-time">
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+              </div>
+            </div>
+            <div class="tweet__content">
+              @Html.DisplayFor(modelItem => item.Description)
+            </div>
+
+
+          @{
+            var valuesToPass = new Dictionary<string, string>
+            {
+            { "TweetID", item.Id.ToString() },
+            { "UserID", currentUserID.ToString() }
+            };
+
+            string imgPath = "";
+
+            if (item.Likes.FirstOrDefault<Like>(l => l.UserID == currentUserID && l.TweetID == item.Id) != null)
+            {
+              imgPath = "./img/heart-solid.svg";
+
+            }
+            else
+            {
+              imgPath = "./img/heart-regular.svg";
+            }
+          }
+          <div class="likeContainer">
+            <a asp-action="Create" asp-controller="Likes"
+            asp-all-route-data="valuesToPass">
+
+              <img class="imgLike" alt="" src="@imgPath" />
+          
+          </a>
+              @item.Likes.Count likes
+              </div>
+          </div>
+        </div>
+     }
+
+      <div class="layout__right-sidebar-container">
+        <div class="layout__right-sidebar">
+          <div class="trends-for-you">
+         
+
+                        <div class="trends-for-you__block">
+                            <div class="trends-for-you__meta-information">
+                                Trending - Trending
+                            </div>
+                            <div class="trends-for-you__trend-name">
+                                #PMKisan 
+                            </div>
+                            <div class="trends-for-you__meta-information">
+                                24.6k Tweets
+                            </div>
+                        </div>
+
+          </div>
+                    <div class="layout__right-sidebar-container">
+                        <div class="layout__right-sidebar">
+                            <div class="trends-for-you">
+                                <div class="trends-for-you__block">
+                                    <div class="trends-for-you__heading">
+                                        Trends for you
+                                    </div>
+                                </div>
+                                <div class="trends-for-you__block">
+                                    <div class="trends-for-you__meta-information">
+                                        Trending in USA
+                                    </div>
+                                    <div class="trends-for-you__trend-name">
+                                        #iPhone13 pro
+                                    </div>
+                                    <div class="trends-for-you__meta-information">
+                                        50k Tweets
+                                    </div>
+                                </div>
+                                <div class="trends-for-you__block">
+                                    <div class="trends-for-you__meta-information">
+                                        Trending in India
+                                    </div>
+                                    <div class="trends-for-you__trend-name">
+                                        #INDvsAUS Under
+                                    </div>
+                                    <div class="trends-for-you__meta-information">
+                                        10.4k Tweets
+                                    </div>
+                                </div>
+
+                                <div class="trends-for-you__block">
+                                    <div class="trends-for-you__meta-information">
+                                        Trending - Trending
+                                    </div>
+                                    <div class="trends-for-you__trend-name">
+                                        #PMKisan
+                                    </div>
+                                    <div class="trends-for-you__meta-information">
+                                        24.6k Tweets
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="who-to-follow">
+                                <div class="who-to-follow__block">
+                                    <div class="who-to-follow__heading">
+                                        Who to follow
+                                    </div>
+                                </div>
+                                <div class="who-to-follow__block">
+                                    <img class="who-to-follow__author-logo" src="./img/Amitabh-Bachchan.jpg" />
+                                    <div class="who-to-follow__content">
+                                        <div>
+                                            <div class="who-to-follow__author-name">
+                                                Amitabh Bachchan
+                                            </div>
+                                            <div class="who-to-follow__author-slug">
+                                                Amitabh_Bachhan
+                                            </div>
+                                        </div>
+                                        <div class="who-to-follow__button">
+                                            Follow
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="who-to-follow__block">
+                                    <img class="who-to-follow__author-logo" src="./img/akshay.jpg" />
+                                    <div class="who-to-follow__content">
+                                        <div>
+                                            <div class="who-to-follow__author-name">
+                                                Akashy Kumar
+                                            </div>
+                                            <div class="who-to-follow__author-slug">
+                                                Akshay_kumar
+                                            </div>
+                                        </div>
+                                        <div class="who-to-follow__button">
+                                            Follow
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+        </div>
+
+
+      </div>
+    </div>
+    </div>
+</body>
+  <footer id="footer">
+    <i class="footer-item fa-brands fa-twitter"></i>
+    <i class="footer-item fa-brands fa-facebook-f"></i>
+    <i class="footer-item fa-brands fa-instagram"></i>
+    <i class="footer-item fa-solid fa-envelope"></i>
+    <p>© Copyright 2022 Jeetu Kumar</p>
+
+  </footer>
+</html>
